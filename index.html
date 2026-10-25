@@ -1,61 +1,298 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="h-full">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>The Royal Arena: Time to Rule - आधिकारिक टूर्नामेंट ऐप</title>
-
-  <!-- PWA & Mobile Meta Tags -->
-  <meta name="theme-color" content="#050811">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Royal Arena">
-  
-  <!-- App Icons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/icon-192.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-
-  <!-- PWA Manifest Link -->
-  <link rel="manifest" href="/manifest.json">
-
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(console.error);
-      });
-    }
-  </script>
-
-  <!-- CDNs & Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            royal: {
-              gold: '#F59E0B',
-              goldLight: '#FDE68A',
-              goldDark: '#B45309',
-              goldBorder: '#D97706',
-              bgDark: '#050811',
-              cardDark: '#0C1322',
-              surfaceDark: '#141E34',
-              borderDark: '#26344E'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Arena - Cricket Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cricket: {
+                            900: '#062314',
+                            800: '#0a3821',
+                            700: '#0f4d2e',
+                            600: '#156b3f',
+                            500: '#1b8a51',
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            400: '#fbbf24',
+                        }
+                    }
+                }
             }
-          },
-          fontFamily: {
-            cinzel: ['"Cinzel"', 'serif'],
-            inter: ['"Inter"', 'sans-serif'],
-          }
         }
-      }
-    }
-  </script>
+    </script>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(15, 77, 46, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(245, 158, 11, 0.2); }
+        .gold-glow { box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #062314; }
+        ::-webkit-scrollbar-thumb { background: #1b8a51; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+    </style>
 </head>
+<body class="bg-gradient-to-br from-gray-950 via-cricket-900 to-gray-900 text-gray-100 min-h-full flex flex-col selection:bg-gold-500 selection:text-black">
+
+    <!-- Top Header & Tournament Switcher Bar -->
+    <header class="bg-cricket-900/90 border-b border-gold-500/30 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- App Branding -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-gold-600 to-gold-400 flex items-center justify-center text-cricket-900 font-extrabold text-xl shadow-lg gold-glow">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">
+                        THE ROYAL ARENA
+                    </h1>
+                    <p class="text-xs text-emerald-300 font-medium tracking-widest uppercase">Professional Cricket Hub</p>
+                </div>
+            </div>
+
+            <!-- Tournament Switcher & Controls -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                <div class="relative flex-1 md:flex-initial">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gold-400 pointer-events-none">
+                        <i class="fa-solid fa-shield-halved text-xs"></i>
+                    </span>
+                    <select id="tournamentSelect" onchange="switchTournament(this.value)" class="w-full md:w-64 bg-cricket-800 border border-gold-500/40 text-sm rounded-xl pl-9 pr-8 py-2.5 text-gold-300 font-semibold focus:outline-none focus:ring-2 focus:ring-gold-400 cursor-pointer shadow-inner">
+                        <!-- Dynamically populated -->
+                    </select>
+                </div>
+                <button onclick="openNewTournamentModal()" class="bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-cricket-900 font-bold px-4 py-2.5 rounded-xl text-sm shadow-md transition-all flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-plus"></i>
+                    <span class="hidden sm:inline">New Tournament</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto space-x-2 py-2 border-t border-cricket-800 scrollbar-none">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap bg-gold-500 text-cricket-900 shadow-md">
+                <i class="fa-solid fa-chart-pie"></i> Dashboard
+            </button>
+            <button onclick="switchTab('teams')" id="tab-teams" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap text-gray-300 hover:text-gold-400 hover:bg-cricket-800">
+                <i class="fa-solid fa-users"></i> Teams & Players
+            </button>
+            <button onclick="switchTab('scoring')" id="tab-scoring" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap text-gray-300 hover:text-gold-400 hover:bg-cricket-800">
+                <i class="fa-solid fa-baseball-bat-ball"></i> Live Scoring
+            </button>
+            <button onclick="switchTab('points')" id="tab-points" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap text-gray-300 hover:text-gold-400 hover:bg-cricket-800">
+                <i class="fa-solid fa-list-ol"></i> Points & Leaders
+            </button>
+            <button onclick="switchTab('history')" id="tab-history" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap text-gray-300 hover:text-gold-400 hover:bg-cricket-800">
+                <i class="fa-solid fa-clock-rotate-left"></i> Match History
+            </button>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+
+        <!-- 1. DASHBOARD TAB -->
+        <section id="view-dashboard" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card rounded-2xl p-5 shadow-lg border-l-4 border-l-gold-500">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Total Teams</p>
+                            <h3 id="statTotalTeams" class="text-3xl font-extrabold text-gold-400 mt-1">0</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-cricket-800 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-shield"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-lg border-l-4 border-l-emerald-500">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Matches Played</p>
+                            <h3 id="statTotalMatches" class="text-3xl font-extrabold text-emerald-400 mt-1">0</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-cricket-800 text-emerald-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-lg border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Orange Cap Leader</p>
+                            <h3 id="statTopBatsman" class="text-lg font-bold text-amber-300 mt-1 truncate max-w-[150px]">None</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-cricket-800 text-amber-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-medal"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-lg border-l-4 border-l-purple-500">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Purple Cap Leader</p>
+                            <h3 id="statTopBowler" class="text-lg font-bold text-purple-300 mt-1 truncate max-w-[150px]">None</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-cricket-800 text-purple-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-bowling-ball"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Banners & Active Tournament Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 glass-card rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <span class="bg-gold-500/20 text-gold-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Active Tournament</span>
+                        <h2 id="activeTournamentTitle" class="text-2xl sm:text-3xl font-extrabold text-white mt-3">The Royal Arena 2026</h2>
+                        <p class="text-gray-300 text-sm mt-2">Manage your tournament squads, run live ball-by-ball matches, track leaderboards instantly, and share exciting scorecards on WhatsApp.</p>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <button onclick="switchTab('scoring')" class="bg-gold-500 hover:bg-gold-400 text-cricket-900 font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> Start / Resume Match
+                        </button>
+                        <button onclick="switchTab('teams')" class="bg-cricket-800 hover:bg-cricket-700 text-gold-300 border border-gold-500/30 font-bold px-5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-user-plus"></i> Add Teams & Players
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Feed -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+                    <h3 class="text-lg font-bold text-gold-400 flex items-center gap-2 border-b border-cricket-700 pb-3">
+                        <i class="fa-solid fa-bolt"></i> Quick Tournament Status
+                    </h3>
+                    <div id="dashboardRecentActivity" class="mt-4 space-y-3 flex-1 overflow-y-auto max-h-[220px]">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. TEAMS & PLAYERS TAB -->
+        <section id="view-teams" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Add Team Form -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-lg font-bold text-gold-400 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-plus"></i> Create New Team
+                    </h3>
+                    <form onsubmit="handleCreateTeam(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Team Name</label>
+                            <input type="text" id="teamNameInput" required placeholder="e.g. Royal Challengers" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Team Code (Short)</label>
+                            <input type="text" id="teamCodeInput" required maxlength="4" placeholder="e.g. RCB" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white uppercase focus:outline-none focus:ring-2 focus:ring-gold-400">
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 text-cricket-900 font-bold py-2.5 rounded-xl text-sm transition-all shadow-md">
+                            Add Team
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Add Player Form -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-lg font-bold text-gold-400 flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i> Add Player to Team
+                    </h3>
+                    <form onsubmit="handleCreatePlayer(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Select Team</label>
+                            <select id="playerTeamSelect" required class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-400">
+                                <!-- Populated -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Player Name</label>
+                            <input type="text" id="playerNameInput" required placeholder="e.g. Virat Kohli" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Player Role</label>
+                            <select id="playerRoleSelect" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-400">
+                                <option value="Batsman">Batsman</option>
+                                <option value="Bowler">Bowler</option>
+                                <option value="All-rounder">All-rounder</option>
+                                <option value="Wicketkeeper">Wicketkeeper</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 text-white font-bold py-2.5 rounded-xl text-sm transition-all shadow-md">
+                            Add Player
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Teams & Squads View -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col max-h-[500px]">
+                    <h3 class="text-lg font-bold text-gold-400 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-list"></i> Squad Lists</span>
+                        <span id="teamsCountBadge" class="text-xs bg-cricket-800 text-gold-300 px-2.5 py-1 rounded-full">0 Teams</span>
+                    </h3>
+                    <div id="teamsListContainer" class="space-y-4 overflow-y-auto flex-1 pr-1">
+                        <!-- Populated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LIVE SCORING ENGINE TAB -->
+        <section id="view-scoring" class="hidden space-y-6">
+            <!-- Match Setup Card (if no active match) -->
+            <div id="matchSetupCard" class="glass-card rounded-2xl p-6 shadow-xl max-w-xl mx-auto space-y-6">
+                <h3 class="text-xl font-bold text-gold-400 text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-flag-checkered"></i> Setup New Match
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Batting Team</label>
+                        <select id="matchTeamA" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            <!-- Populated -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Bowling Team</label>
+                        <select id="matchTeamB" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            <!-- Populated -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-1">Total Overs</label>
+                        <input type="number" id="matchOvers" value="5" min="1" max="50" class="w-full bg-cricket-800 border border-gold-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                    </div>
+                    <button onclick="startLiveMatch()" class="w-full bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 text-cricket-900 font-extrabold py-3 rounded-xl text-base transition-all shadow-lg">
+                        <i class="fa-solid fa-play mr-2"></i> Start Live Match
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Scoring Console (active match) -->
+            <div id="matchLiveConsole" class="hidden space-y-6">
+                <!-- Scoreboard Header -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl border-2 border-gold-500/40 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gold-500 text-cricket-900 text-xs font-extrabold px-4 py-1 rounded-bl-xl uppercase tracking-widest">
+                        LIVE MATCH
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                        <div>
+                            <span id="liveBattingTeamName" class="text-gold-400 text-sm font-bold uppercase tracking-wider">Team A</span>
+                            <div class="text-4xl sm:text-6xl font-black text-white mt-1">
+                                <span id="liveScore">0</span>/<span id="liveWickets">0</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-1">Overs: <span id="liveOvers" class="font-bold text-gold-300">0.0</span> / <span id="maxOversDisplay">5</span></p>
+                        </div>
+                        <div class="bg-cricket-800/80 p-4 rounded-xl border border-gold-500/20 text-center min-w-[200px]">
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Current Ru
