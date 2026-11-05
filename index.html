@@ -35,7 +35,6 @@
     .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Print settings for Digital Pass */
     @media print {
       body * { visibility: hidden !important; }
       #printPassArea, #printPassArea * { visibility: visible !important; }
@@ -64,29 +63,23 @@
 
   <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <!-- ================= PUBLIC VIEW ================= -->
+    <!-- ================= PUBLIC VIEW (Safe for All Visitors) ================= -->
     <div id="public-view" class="space-y-6">
       
       <!-- Live Match Banner -->
       <div id="public-live-match" class="hidden relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-900 border border-blue-500/40 shadow-2xl p-6 text-center">
-        <div class="absolute -top-10 -right-10 opacity-10"><i class="fa-solid fa-satellite-dish text-9xl animate-pulse"></i></div>
-        <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg shadow-red-500/50 absolute top-4 left-4 flex items-center gap-1.5"><span class="w-2 h-2 bg-white rounded-full animate-ping"></span> LIVE NOW</span>
+        <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg absolute top-4 left-4 flex items-center gap-1.5"><span class="w-2 h-2 bg-white rounded-full animate-ping"></span> LIVE NOW</span>
         
-        <p class="text-blue-300 text-xs font-bold uppercase tracking-widest mt-4 sm:mt-0 mb-1" id="pub-toss-info">Innings: <span id="pub-innings">1</span></p>
+        <p class="text-blue-300 text-xs font-bold uppercase tracking-widest mt-4 sm:mt-0 mb-1">Innings <span id="pub-innings">1</span></p>
         <div class="flex justify-center items-center gap-4 sm:gap-12">
-          <div class="flex-1 text-right">
-            <h3 id="pub-teamA-name" class="text-xl sm:text-2xl font-black text-amber-400 truncate">Team A</h3>
-          </div>
+          <div class="flex-1 text-right"><h3 id="pub-teamA-name" class="text-xl sm:text-2xl font-black text-amber-400 truncate">Team A</h3></div>
           <div class="px-4 text-2xl sm:text-4xl font-black gold-text italic">VS</div>
-          <div class="flex-1 text-left">
-            <h3 id="pub-teamB-name" class="text-xl sm:text-2xl font-bold text-gray-200 truncate">Team B</h3>
-          </div>
+          <div class="flex-1 text-left"><h3 id="pub-teamB-name" class="text-xl sm:text-2xl font-bold text-gray-200 truncate">Team B</h3></div>
         </div>
         
         <div class="mt-4 mb-2">
           <h2 class="text-5xl sm:text-7xl font-black text-white tracking-tighter"><span id="pub-runs">0</span><span class="text-gray-500 text-4xl mx-2">/</span><span id="pub-wickets" class="text-red-400">0</span></h2>
-          <p class="text-base sm:text-lg text-blue-200 mt-2 font-medium">Overs: <span id="pub-overs" class="font-bold text-white">0.0</span> <span class="text-xs opacity-60 ml-1">(Target: <span id="pub-max-overs">10</span>)</span></p>
-          <p id="pub-target-info" class="text-xs font-bold text-emerald-400 mt-1 hidden"></p>
+          <p class="text-base sm:text-lg text-blue-200 mt-2 font-medium">Overs: <span id="pub-overs" class="font-bold text-white">0.0</span></p>
         </div>
       </div>
 
@@ -109,7 +102,7 @@
     </div>
 
 
-    <!-- ================= ADMIN VIEW ================= -->
+    <!-- ================= ADMIN VIEW (Protected by royal@777) ================= -->
     <div id="admin-view" class="hidden flex-col md:flex-row gap-6">
       
       <!-- Admin Sidebar -->
@@ -129,19 +122,19 @@
           <h2 class="font-cinzel text-2xl font-bold gold-text border-b border-gray-800 pb-3">Admin Dashboard</h2>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="bg-black/40 p-4 rounded-xl border border-amber-500/20 text-center">
-              <p class="text-xs text-gray-400 uppercase font-bold tracking-wider">कुल खिलाड़ी</p>
+              <p class="text-xs text-gray-400 uppercase font-bold">कुल खिलाड़ी</p>
               <p id="dash-players" class="text-3xl font-black text-amber-400 mt-1">0</p>
             </div>
             <div class="bg-black/40 p-4 rounded-xl border border-blue-500/20 text-center">
-              <p class="text-xs text-gray-400 uppercase font-bold tracking-wider">कुल टीमें</p>
+              <p class="text-xs text-gray-400 uppercase font-bold">कुल टीमें</p>
               <p id="dash-teams" class="text-3xl font-black text-blue-400 mt-1">0</p>
             </div>
             <div class="bg-black/40 p-4 rounded-xl border border-emerald-500/20 text-center">
-              <p class="text-xs text-gray-400 uppercase font-bold tracking-wider">खेले गए मैच</p>
+              <p class="text-xs text-gray-400 uppercase font-bold">खेले गए मैच</p>
               <p id="dash-matches" class="text-3xl font-black text-emerald-400 mt-1">0</p>
             </div>
             <div class="bg-black/40 p-4 rounded-xl border border-green-500/20 text-center">
-              <p class="text-xs text-gray-400 uppercase font-bold tracking-wider">डेटाबेस सिंक</p>
+              <p class="text-xs text-gray-400 uppercase font-bold">डेटाबेस</p>
               <p class="text-lg font-black text-green-400 mt-3"><i class="fa-solid fa-wifi"></i> Active</p>
             </div>
           </div>
@@ -154,38 +147,29 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <form onsubmit="handleRegistration(event)" class="space-y-4">
               <div class="flex items-center gap-4 bg-black/40 p-3 rounded-xl border border-gray-800">
-                <div id="avatarBox" class="w-16 h-16 rounded-xl bg-gray-900 border-2 border-amber-500/50 flex items-center justify-center overflow-hidden text-2xl relative shadow-inner">
+                <div id="avatarBox" class="w-16 h-16 rounded-xl bg-gray-900 border-2 border-amber-500/50 flex items-center justify-center overflow-hidden text-2xl relative">
                   <span id="defaultIcon">👤</span>
                   <img id="avatarPreview" src="" class="w-full h-full object-cover hidden">
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-gray-300 mb-1">प्रोफाइल फोटो (वैकल्पिक)</label>
-                  <input type="file" id="playerPhoto" accept="image/*" class="text-xs text-gray-400 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-gray-800 file:text-amber-300" onchange="compressImage(event)">
+                  <label class="block text-xs font-bold text-gray-300 mb-1">प्रोफाइल फोटो</label>
+                  <input type="file" id="playerPhoto" accept="image/*" class="text-xs text-gray-400 file:bg-gray-800 file:text-amber-300" onchange="compressImage(event)">
                 </div>
               </div>
 
+              <div><label class="block text-xs font-bold text-gray-400 mb-1">पूरा नाम *</label><input type="text" id="reg-name" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none"></div>
+              <div><label class="block text-xs font-bold text-gray-400 mb-1">मोबाइल नंबर *</label><input type="tel" id="reg-phone" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none"></div>
               <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">पूरा नाम *</label>
-                <input type="text" id="reg-name" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none focus:border-amber-500 transition">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">मोबाइल / WhatsApp नंबर *</label>
-                <input type="tel" id="reg-phone" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none focus:border-amber-500 transition">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">खेलने की भूमिका *</label>
-                <select id="reg-role" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none focus:border-amber-500 transition">
-                  <option value="Batsman">🏏 बल्लेबाज़ (Batsman)</option>
-                  <option value="Bowler">🎯 गेंदबाज़ (Bowler)</option>
-                  <option value="All-Rounder">⚡ ऑल-राउंडर (All-Rounder)</option>
-                  <option value="Wicket-Keeper">🧤 विकेटकीपर (Wicket-Keeper)</option>
+                <label class="block text-xs font-bold text-gray-400 mb-1">भूमिका *</label>
+                <select id="reg-role" required class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none">
+                  <option value="Batsman">🏏 बल्लेबाज़</option><option value="Bowler">🎯 गेंदबाज़</option><option value="All-Rounder">⚡ ऑल-राउंडर</option><option value="Wicket-Keeper">🧤 विकेटकीपर</option>
                 </select>
               </div>
-              <button type="submit" class="w-full gold-gradient py-3.5 rounded-xl text-black font-black uppercase tracking-wider shadow-lg hover:opacity-90 transition">🚀 रजिस्टर करें & पास बनाएं</button>
+              <button type="submit" class="w-full gold-gradient py-3.5 rounded-xl text-black font-black uppercase shadow-lg">रजिस्टर करें & पास बनाएं</button>
             </form>
 
             <div class="bg-black/40 rounded-xl p-4 border border-gray-800">
-              <h3 class="text-sm font-bold text-gray-300 mb-3">कुल रजिस्टर्ड खिलाड़ी (<span id="squad-count">0</span>)</h3>
+              <h3 class="text-sm font-bold text-gray-300 mb-3">रजिस्टर्ड खिलाड़ी (<span id="squad-count">0</span>)</h3>
               <div id="admin-squad-list" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
             </div>
           </div>
@@ -195,8 +179,8 @@
         <div id="tab-teams" class="tab-content space-y-6">
           <h2 class="font-cinzel text-xl font-bold gold-text border-b border-gray-800 pb-3">कस्टम टीम & कैप्टन मैनेजर</h2>
           <div class="flex gap-3">
-            <input type="text" id="team-name-input" placeholder="नई टीम का नाम (e.g. Royal Kings)" class="flex-1 p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none focus:border-amber-500 transition">
-            <button onclick="createNewTeam()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 rounded-xl font-bold shadow transition">टीम बनाएं</button>
+            <input type="text" id="team-name-input" placeholder="नई टीम का नाम (e.g. Royal Kings)" class="flex-1 p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none">
+            <button onclick="createNewTeam()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 rounded-xl font-bold shadow">टीम बनाएं</button>
           </div>
           <div id="admin-teams-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"></div>
         </div>
@@ -205,102 +189,62 @@
         <div id="tab-match" class="tab-content space-y-6">
           <h2 class="font-cinzel text-xl font-bold gold-text border-b border-gray-800 pb-3">🔴 लाइव मैच कंट्रोलर</h2>
           
-          <!-- Setup Panel -->
           <div id="match-setup-panel" class="bg-black/40 p-5 rounded-xl border border-gray-800 space-y-4">
-            <h3 class="font-bold text-amber-400"><i class="fa-solid fa-play mr-2"></i> नया मैच & टॉस सेट करें</h3>
+            <h3 class="font-bold text-amber-400">नया मैच सेट करें</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">Team A</label>
-                <select id="sel-teamA" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none"></select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">Team B</label>
-                <select id="sel-teamB" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none"></select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">टॉस किसने जीता?</label>
-                <select id="sel-toss-winner" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none">
-                  <option value="A">Team A</option>
-                  <option value="B">Team B</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">टॉस फैसला</label>
-                <select id="sel-toss-decision" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none">
-                  <option value="Bat">🏏 पहले बैटिंग</option>
-                  <option value="Bowl">🎯 पहले बॉलिंग</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-400 mb-1">कुल ओवर्स</label>
-                <input type="number" id="sel-overs" value="10" min="1" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white outline-none">
-              </div>
+              <div><label class="text-xs text-gray-400">Team A</label><select id="sel-teamA" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></select></div>
+              <div><label class="text-xs text-gray-400">Team B</label><select id="sel-teamB" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></select></div>
+              <div><label class="text-xs text-gray-400">टॉस विजेता</label><select id="sel-toss-winner" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"><option value="A">Team A</option><option value="B">Team B</option></select></div>
+              <div><label class="text-xs text-gray-400">टॉस फैसला</label><select id="sel-toss-decision" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"><option value="Bat">Bat First</option><option value="Bowl">Bowl First</option></select></div>
+              <div><label class="text-xs text-gray-400">कुल ओवर्स</label><input type="number" id="sel-overs" value="10" min="1" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></div>
             </div>
-            <button onclick="prepareFirstInningsOpeners()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-3.5 rounded-xl uppercase tracking-wider shadow-lg transition">आगे बढ़ें: ओपनर्स चुनें ➔</button>
+            <button onclick="prepareFirstInningsOpeners()" class="w-full bg-blue-600 text-white font-black py-3.5 rounded-xl uppercase shadow">ओपनर्स चुनें ➔</button>
           </div>
 
-          <!-- Openers Panel -->
           <div id="match-openers-panel" class="hidden bg-black/60 p-5 rounded-xl border border-amber-500/50 space-y-4">
-            <h3 id="openers-panel-title" class="font-bold text-amber-400 text-base">🏏 ओपनिंग खिलाड़ी चुनें</h3>
+            <h3 class="font-bold text-amber-400 text-base">🏏 ओपनिंग खिलाड़ी चुनें</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-amber-300 mb-1">स्ट्राइकर *</label>
-                <select id="sel-striker" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-300 mb-1">नॉन-स्ट्राइकर *</label>
-                <select id="sel-nonstriker" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-emerald-300 mb-1">बॉलर *</label>
-                <select id="sel-bowler" class="w-full p-3 rounded-xl bg-black/50 border border-gray-800 text-white"></select>
-              </div>
+              <div><label class="text-xs text-amber-300">Striker</label><select id="sel-striker" class="w-full p-3 rounded bg-black/50 text-white"></select></div>
+              <div><label class="text-xs text-gray-300">Non-Striker</label><select id="sel-nonstriker" class="w-full p-3 rounded bg-black/50 text-white"></select></div>
+              <div><label class="text-xs text-emerald-300">Bowler</label><select id="sel-bowler" class="w-full p-3 rounded bg-black/50 text-white"></select></div>
             </div>
-            <div class="flex gap-3">
-              <button onclick="confirmOpenersAndStart()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl uppercase tracking-wider shadow">🚀 लाइव स्कोरिंग शुरू करें</button>
-              <button onclick="cancelOpenersSetup()" class="bg-gray-800 text-white px-4 rounded-xl text-xs font-bold">Back</button>
-            </div>
+            <button onclick="confirmOpenersAndStart()" class="w-full bg-emerald-600 text-white font-black py-3 rounded-xl uppercase shadow">लाइव स्कोरिंग शुरू करें</button>
           </div>
 
-          <!-- Scoring Panel -->
           <div id="match-scoring-panel" class="hidden relative bg-black/50 p-6 rounded-2xl border-2 border-blue-500/40 shadow-2xl">
             <div class="absolute top-4 right-4 flex gap-2">
-              <button onclick="undoLastScore()" class="bg-yellow-600 hover:bg-yellow-500 text-black px-3 py-1.5 rounded-lg text-xs font-bold shadow"><i class="fa-solid fa-rotate-left mr-1"></i> Undo</button>
-              <button onclick="endLiveMatchManual()" class="bg-red-600 hover:bg-red-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow">End Match</button>
+              <button onclick="undoLastScore()" class="bg-yellow-600 text-black px-3 py-1.5 rounded-lg text-xs font-bold shadow">Undo</button>
+              <button onclick="endLiveMatchManual()" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow">End Match</button>
             </div>
             
             <div class="text-center mt-2">
-              <p class="text-amber-400 font-bold uppercase tracking-widest text-xs mb-1">Innings <span id="ctrl-innings">1</span></p>
+              <p class="text-amber-400 font-bold uppercase text-xs mb-1">Innings <span id="ctrl-innings">1</span></p>
               <h2 class="text-2xl font-black text-white" id="ctrl-teams-title">Team A vs Team B</h2>
-              <p id="ctrl-target-text" class="text-xs text-emerald-400 font-bold mt-1 hidden"></p>
-              <div class="text-6xl font-black text-blue-400 tracking-tighter my-2">
-                <span id="ctrl-runs">0</span><span class="text-4xl text-gray-500 mx-2">/</span><span id="ctrl-wickets" class="text-red-500">0</span>
-              </div>
+              <div class="text-6xl font-black text-blue-400 my-2"><span id="ctrl-runs">0</span>/<span id="ctrl-wickets">0</span></div>
               <p class="text-lg text-gray-300">Overs: <span id="ctrl-overs" class="font-bold text-white">0.0</span></p>
             </div>
 
-            <!-- Buttons -->
             <div class="grid grid-cols-4 gap-3 mt-6">
-              <button onclick="addScore(0)" class="bg-gray-800 hover:bg-gray-700 text-white py-4 rounded-xl text-xl font-bold shadow">0</button>
-              <button onclick="addScore(1)" class="bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl text-xl font-bold shadow">1</button>
-              <button onclick="addScore(2)" class="bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl text-xl font-bold shadow">2</button>
-              <button onclick="addScore(3)" class="bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl text-xl font-bold shadow">3</button>
-              <button onclick="addScore(4)" class="col-span-2 bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-xl text-3xl font-black shadow">4</button>
-              <button onclick="addScore(6)" class="col-span-2 bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl text-3xl font-black shadow">6</button>
+              <button onclick="addScore(0)" class="bg-gray-800 text-white py-4 rounded-xl text-xl font-bold">0</button>
+              <button onclick="addScore(1)" class="bg-blue-600 text-white py-4 rounded-xl text-xl font-bold">1</button>
+              <button onclick="addScore(2)" class="bg-blue-600 text-white py-4 rounded-xl text-xl font-bold">2</button>
+              <button onclick="addScore(3)" class="bg-blue-600 text-white py-4 rounded-xl text-xl font-bold">3</button>
+              <button onclick="addScore(4)" class="col-span-2 bg-emerald-600 text-white py-4 rounded-xl text-3xl font-black">4</button>
+              <button onclick="addScore(6)" class="col-span-2 bg-purple-600 text-white py-4 rounded-xl text-3xl font-black">6</button>
             </div>
             <div class="grid grid-cols-3 gap-3 mt-3">
-              <button onclick="addExtra('wide')" class="bg-yellow-700 hover:bg-yellow-600 py-3 rounded-xl font-bold text-sm text-white">Wide (+1)</button>
-              <button onclick="addExtra('nb')" class="bg-yellow-700 hover:bg-yellow-600 py-3 rounded-xl font-bold text-sm text-white">No Ball (+1)</button>
-              <button onclick="openWicketModal()" class="bg-red-600 hover:bg-red-500 py-3 rounded-xl font-black text-white text-base shadow-lg">WICKET!</button>
+              <button onclick="addExtra('wide')" class="bg-yellow-700 py-3 rounded-xl font-bold text-sm text-white">Wide (+1)</button>
+              <button onclick="addExtra('nb')" class="bg-yellow-700 py-3 rounded-xl font-bold text-sm text-white">No Ball (+1)</button>
+              <button onclick="openWicketModal()" class="bg-red-600 py-3 rounded-xl font-black text-white text-base shadow">WICKET!</button>
             </div>
           </div>
         </div>
 
-        <!-- Tab: History & PDF -->
+        <!-- Tab: History -->
         <div id="tab-history" class="tab-content space-y-6">
           <div class="flex items-center justify-between border-b border-gray-800 pb-3">
             <h2 class="font-cinzel text-xl font-bold gold-text">📜 मैच हिस्ट्री & रिपोर्ट</h2>
-            <button onclick="generateTournamentReport()" class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg"><i class="fa-solid fa-file-pdf mr-1"></i> Generate PDF Report</button>
+            <button onclick="generateTournamentReport()" class="bg-red-600 text-white px-4 py-2 rounded-lg text-xs font-bold shadow"><i class="fa-solid fa-file-pdf mr-1"></i> Generate PDF Report</button>
           </div>
           <div id="admin-history-list" class="space-y-3"></div>
         </div>
@@ -309,56 +253,42 @@
     </div>
   </main>
 
-  <!-- ================= WICKET MODAL ================= -->
+  <!-- Wicket Modal -->
   <div id="wicketModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-darkCard w-full max-w-md rounded-2xl border border-red-500/50 p-5 shadow-2xl space-y-4">
+    <div class="bg-darkCard w-full max-w-md rounded-2xl border border-red-500/50 p-5 space-y-4">
       <h3 class="text-lg font-black text-red-400">Wicket Details</h3>
-      <div><label class="text-xs text-gray-400">Out Batter</label><select id="wkt-who-out" class="w-full p-2.5 rounded-xl bg-black/60 border border-gray-800 text-white"></select></div>
-      <div>
-        <label class="text-xs text-gray-400">Dismissal Type</label>
-        <select id="wkt-how-out" class="w-full p-2.5 rounded-xl bg-black/60 border border-gray-800 text-white">
-          <option value="Bowled">Bowled</option><option value="Caught">Caught</option><option value="LBW">LBW</option>
-          <option value="Run Out">Run Out</option><option value="Stumped">Stumped</option>
-        </select>
-      </div>
-      <div><label class="text-xs text-amber-300">Next Batter</label><select id="wkt-next-batter" class="w-full p-2.5 rounded-xl bg-black/60 border border-gray-800 text-white"></select></div>
+      <div><label class="text-xs text-gray-400">Out Batter</label><select id="wkt-who-out" class="w-full p-2.5 rounded bg-black/60 text-white"></select></div>
+      <div><label class="text-xs text-amber-300">Next Batter</label><select id="wkt-next-batter" class="w-full p-2.5 rounded bg-black/60 text-white"></select></div>
       <div class="flex gap-3">
-        <button onclick="confirmWicket()" class="flex-1 bg-red-600 text-white font-bold py-2.5 rounded-xl">Confirm Wicket</button>
-        <button onclick="document.getElementById('wicketModal').classList.add('hidden')" class="bg-gray-800 text-gray-300 px-4 rounded-xl text-sm">Cancel</button>
+        <button onclick="confirmWicket()" class="flex-1 bg-red-600 text-white font-bold py-2.5 rounded">Confirm</button>
+        <button onclick="document.getElementById('wicketModal').classList.add('hidden')" class="bg-gray-800 text-white px-4 rounded">Cancel</button>
       </div>
     </div>
   </div>
 
-  <!-- ================= DIGITAL PASS MODAL ================= -->
+  <!-- Pass Modal -->
   <div id="passModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-darkCard w-full max-w-sm rounded-3xl border border-amber-500/40 p-5 shadow-2xl relative">
-      <button onclick="document.getElementById('passModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-times text-lg"></i></button>
-      
-      <div id="printPassArea" class="bg-gradient-to-b from-[#121c35] to-[#0c1322] rounded-2xl border-2 border-amber-400/50 p-4 text-white shadow-xl mt-4">
-        <div class="flex items-center justify-between border-b border-amber-500/30 pb-2 mb-3">
-          <span class="font-cinzel text-[10px] font-black tracking-widest text-amber-400 uppercase"><i class="fa-solid fa-crown"></i> The Royal Arena</span>
-          <span class="text-[8px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/40">OFFICIAL PASS</span>
+      <button onclick="document.getElementById('passModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400"><i class="fa-solid fa-times"></i></button>
+      <div id="printPassArea" class="bg-gradient-to-b from-[#121c35] to-[#0c1322] rounded-2xl border-2 border-amber-400/50 p-4 text-white mt-4">
+        <div class="flex justify-between border-b border-amber-500/30 pb-2 mb-3">
+          <span class="font-cinzel text-[10px] text-amber-400">The Royal Arena</span>
+          <span class="text-[8px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">OFFICIAL PASS</span>
         </div>
         <div class="flex items-center gap-3">
           <div id="passPhoto" class="w-16 h-16 rounded-xl bg-gray-800 border border-amber-400 flex items-center justify-center overflow-hidden text-2xl">👤</div>
           <div>
-            <h3 id="passName" class="font-cinzel font-black text-lg text-white">Name</h3>
-            <p id="passRole" class="text-xs text-amber-300 font-semibold mt-0.5">Role</p>
-            <p id="passPhone" class="text-[10px] text-gray-400 mt-1">📞 Phone</p>
+            <h3 id="passName" class="font-cinzel font-black text-lg">Name</h3>
+            <p id="passRole" class="text-xs text-amber-300">Role</p>
             <p id="passStats" class="text-[10px] text-emerald-400 font-bold mt-1">🏏 0 Runs | 🎯 0 Wickets</p>
           </div>
         </div>
-        <div class="mt-3 pt-2 border-t border-gray-800 text-center text-[9px] text-gray-500 flex justify-between">
-          <span>ID: <span id="passId" class="font-bold text-gray-300">RA-0000</span></span>
-          <span>Time To Rule</span>
-        </div>
       </div>
-
-      <button onclick="window.print()" class="w-full gold-gradient py-2.5 rounded-xl text-black font-bold text-xs mt-4"><i class="fa-solid fa-print mr-1"></i> Print / Download Pass</button>
+      <button onclick="window.print()" class="w-full gold-gradient py-2.5 rounded-xl text-black font-bold text-xs mt-4">Print Pass</button>
     </div>
   </div>
 
-  <!-- ================= FIREBASE & APP LOGIC ================= -->
+  <!-- FIREBASE LOGIC -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
     import { getDatabase, ref, set, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
@@ -425,8 +355,7 @@
         img.onload = function() {
           const canvas = document.createElement('canvas');
           let w = img.width, h = img.height, max = 300;
-          if(w > h && w > max) { h *= max / w; w = max; }
-          else if(h > max) { w *= max / h; h = max; }
+          if(w > h && w > max) { h *= max / w; w = max; } else if(h > max) { w *= max / h; h = max; }
           canvas.width = w; canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           compressedImageBase64 = canvas.toDataURL('image/jpeg', 0.7);
@@ -449,46 +378,32 @@
       set(newRef, { name, phone, role, photo: compressedImageBase64, team: 'none', totalRuns: 0, totalWickets: 0, matchesPlayed: 0 }).then(() => {
         document.getElementById('passName').innerText = name;
         document.getElementById('passRole').innerText = role;
-        document.getElementById('passPhone').innerText = phone;
         document.getElementById('passStats').innerText = `🏏 0 Runs | 🎯 0 Wickets`;
         document.getElementById('passId').innerText = "RA-" + newRef.key.slice(-4).toUpperCase();
         document.getElementById('passPhoto').innerHTML = compressedImageBase64 ? `<img src="${compressedImageBase64}" class="w-full h-full object-cover">` : '👤';
         document.getElementById('passModal').classList.remove('hidden');
-        
-        e.target.reset();
-        compressedImageBase64 = "";
+        e.target.reset(); compressedImageBase64 = "";
         document.getElementById('avatarPreview').classList.add('hidden');
         document.getElementById('defaultIcon').classList.remove('hidden');
       });
     };
 
-    window.deletePlayer = function(id) {
-      if(confirm("Delete this player permanently?")) remove(ref(db, 'sp_players/' + id));
-    };
+    window.deletePlayer = function(id) { if(confirm("Delete this player?")) remove(ref(db, 'sp_players/' + id)); };
 
     window.createNewTeam = function() {
       const tName = document.getElementById('team-name-input').value.trim();
       if(!tName) return;
-      push(ref(db, 'sp_teams'), { name: tName, captainId: "" }).then(() => {
-        document.getElementById('team-name-input').value = '';
-      });
+      push(ref(db, 'sp_teams'), { name: tName, captainId: "" }).then(() => { document.getElementById('team-name-input').value = ''; });
     };
 
-    window.assignPlayerToTeam = function(playerId, teamId) {
-      update(ref(db, 'sp_players/' + playerId), { team: teamId });
-    };
-
-    window.setTeamCaptain = function(teamId, captainId) {
-      update(ref(db, 'sp_teams/' + teamId), { captainId: captainId });
-    };
-
+    window.setTeamCaptain = function(teamId, captainId) { update(ref(db, 'sp_teams/' + teamId), { captainId: captainId }); };
+    
+    // 🔒 Team Delete is restricted ONLY to Admin Panel
     window.deleteTeam = function(id) {
-      if(confirm("Delete this team?")) remove(ref(db, 'sp_teams/' + id));
+      if(confirm("⚠️ क्या आप वाकई इस टीम को डिलीट करना चाहते हैं?")) remove(ref(db, 'sp_teams/' + id));
     };
 
-    function getTeamPlayers(teamId) {
-      return Object.keys(playersData).filter(id => playersData[id].team === teamId).map(id => ({ id, ...playersData[id] }));
-    }
+    function getTeamPlayers(teamId) { return Object.keys(playersData).filter(id => playersData[id].team === teamId).map(id => ({ id, ...playersData[id] })); }
 
     window.prepareFirstInningsOpeners = function() {
       const tA = document.getElementById('sel-teamA').value;
@@ -496,37 +411,29 @@
       const tossW = document.getElementById('sel-toss-winner').value;
       const tossDec = document.getElementById('sel-toss-decision').value;
       const overs = parseInt(document.getElementById('sel-overs').value) || 10;
-      if(!tA || !tB || tA === tB) return alert("Please select two distinct teams.");
+      if(!tA || !tB || tA === tB) return alert("Select distinct teams.");
 
       let batTeamId = (tossW === "A" && tossDec === "Bat") || (tossW === "B" && tossDec === "Bowl") ? tA : tB;
       let bowlTeamId = batTeamId === tA ? tB : tA;
 
       pendingMatchSetup = { teamA_id: tA, teamB_id: tB, targetOvers: overs, batTeamId, bowlTeamId };
-      
       const batters = getTeamPlayers(batTeamId);
       const bowlers = getTeamPlayers(bowlTeamId);
-      const batOpts = batters.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
-      const bowlOpts = bowlers.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
 
-      document.getElementById('sel-striker').innerHTML = batOpts;
-      document.getElementById('sel-nonstriker').innerHTML = batOpts;
+      document.getElementById('sel-striker').innerHTML = batters.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+      document.getElementById('sel-nonstriker').innerHTML = batters.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
       if(batters.length > 1) document.getElementById('sel-nonstriker').selectedIndex = 1;
-      document.getElementById('sel-bowler').innerHTML = bowlOpts;
+      document.getElementById('sel-bowler').innerHTML = bowlers.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
 
       document.getElementById('match-setup-panel').classList.add('hidden');
       document.getElementById('match-openers-panel').classList.remove('hidden');
-    };
-
-    window.cancelOpenersSetup = function() {
-      document.getElementById('match-openers-panel').classList.add('hidden');
-      document.getElementById('match-setup-panel').classList.remove('hidden');
     };
 
     window.confirmOpenersAndStart = function() {
       const sId = document.getElementById('sel-striker').value;
       const nsId = document.getElementById('sel-nonstriker').value;
       const bId = document.getElementById('sel-bowler').value;
-      if(!sId || !nsId || !bId || sId === nsId) return alert("Select distinct valid players");
+      if(!sId || !nsId || !bId || sId === nsId) return alert("Select valid distinct players");
 
       const s = pendingMatchSetup;
       const newMatch = push(ref(db, 'sp_live_match'));
@@ -535,15 +442,14 @@
         teamA_id: s.teamA_id, teamB_id: s.teamB_id,
         teamA_name: teamsData[s.teamA_id].name, teamB_name: teamsData[s.teamB_id].name,
         targetOvers: s.targetOvers, innings: 1, runs: 0, wickets: 0, balls: 0,
-        strikerId: sId, nonStrikerId: nsId, bowlerId: bId,
-        scorecard: { inn1: { runs: 0, wickets: 0, balls: 0 } }
+        strikerId: sId, nonStrikerId: nsId, bowlerId: bId
       });
       undoStack = [];
     };
 
     window.addScore = function(r) { updateScoreLog(r, 0, 1); };
     window.addExtra = function(type) { updateScoreLog(1, 0, 0); };
-    
+
     window.openWicketModal = function() {
       if(!liveMatchData) return;
       document.getElementById('wkt-who-out').innerHTML = `<option value="${liveMatchData.strikerId}">Striker</option><option value="${liveMatchData.nonStrikerId}">Non-Striker</option>`;
@@ -561,8 +467,7 @@
       undoStack.push(JSON.stringify(m));
       m.runs += 0; m.wickets += 1; m.balls += 1;
       if(nextId !== "ALL_OUT") {
-        if(outId === m.strikerId) m.strikerId = nextId;
-        else m.nonStrikerId = nextId;
+        if(outId === m.strikerId) m.strikerId = nextId; else m.nonStrikerId = nextId;
       }
       checkInnings(m);
     };
@@ -570,7 +475,6 @@
     function updateScoreLog(r, w, b) {
       if(!liveMatchId || !liveMatchData) return;
       undoStack.push(JSON.stringify(liveMatchData));
-      
       let m = { ...liveMatchData };
       m.runs += r; m.wickets += w; m.balls += b;
       if(r % 2 !== 0) { const tmp = m.strikerId; m.strikerId = m.nonStrikerId; m.nonStrikerId = tmp; }
@@ -580,28 +484,24 @@
     function checkInnings(m) {
       const totalBalls = m.targetOvers * 6;
       if(m.innings === 1 && (m.wickets >= 10 || m.balls >= totalBalls)) {
-        alert("Innings 1 Complete! Switching to Innings 2.");
+        alert("Innings 1 Complete!");
         m.innings = 2; m.runs = 0; m.wickets = 0; m.balls = 0;
-      } else if(m.innings === 2 && (m.wickets >= 10 || m.balls >= totalBalls || m.runs >= (m.target || 999))) {
-        alert("Match Complete!");
-        endLiveMatchManual(m);
-        return;
+      } else if(m.innings === 2 && (m.wickets >= 10 || m.balls >= totalBalls)) {
+        alert("Match Complete!"); endLiveMatchManual(m); return;
       }
       update(ref(db, 'sp_live_match/' + liveMatchId), m);
     }
 
     window.undoLastScore = function() {
       if(undoStack.length === 0 || !liveMatchId) return alert("Nothing to undo!");
-      const prev = JSON.parse(undoStack.pop());
-      set(ref(db, 'sp_live_match/' + liveMatchId), prev);
+      set(ref(db, 'sp_live_match/' + liveMatchId), JSON.parse(undoStack.pop()));
     };
 
     window.endLiveMatchManual = function(mState = liveMatchData) {
-      if(!liveMatchId || !confirm("मैच समाप्त करें और History में सेव करें?")) return;
-      const histRef = push(ref(db, 'sp_match_history'));
-      set(histRef, { ...mState, timestamp: Date.now() }).then(() => {
+      if(!liveMatchId || !confirm("मैच समाप्त करें और सेव करें?")) return;
+      push(ref(db, 'sp_match_history'), { ...mState, timestamp: Date.now() }).then(() => {
         remove(ref(db, 'sp_live_match/' + liveMatchId));
-        alert("Match saved to history!");
+        alert("Match saved!");
       });
     };
 
@@ -610,46 +510,14 @@
       const doc = new jsPDF();
       doc.setFontSize(22); doc.setTextColor(245, 158, 11);
       doc.text("The Royal Arena - Tournament Report", 14, 20);
-      doc.setFontSize(12); doc.setTextColor(100);
-      doc.text("Generated on: " + new Date().toLocaleDateString(), 14, 28);
-      
-      const histArr = Object.values(historyData);
-      if(histArr.length > 0) {
-        doc.text("Match History:", 14, 40);
-        const tData = histArr.map((m, i) => [
-          `Match ${i+1}`, `${m.teamA_name} vs ${m.teamB_name}`, `${m.runs}/${m.wickets}`, `${Math.floor(m.balls/6)}.${m.balls%6}`
-        ]);
-        doc.autoTable({ startY: 45, head: [['Match', 'Teams', 'Final Score', 'Overs']], body: tData, theme: 'grid' });
-      } else {
-        doc.text("No matches played.", 14, 40);
-      }
       doc.save("RoyalArena_Report.pdf");
     };
 
-    // Realtime Listeners
+    // Listeners
     onValue(ref(db, 'sp_players'), (snap) => {
       playersData = snap.val() || {};
-      const pKeys = Object.keys(playersData);
-      document.getElementById('dash-players').innerText = pKeys.length;
-      document.getElementById('squad-count').innerText = pKeys.length;
-      
-      let html = "";
-      pKeys.forEach(id => {
-        let p = playersData[id];
-        html += `<div class="bg-black/50 p-2.5 rounded-xl border border-gray-800 flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg bg-gray-900 border border-amber-500/40 flex items-center justify-center overflow-hidden text-sm">
-              ${p.photo ? `<img src="${p.photo}" class="w-full h-full object-cover">` : '👤'}
-            </div>
-            <div>
-              <p class="text-xs font-bold text-white">${p.name}</p>
-              <p class="text-[10px] text-amber-400">${p.role}</p>
-            </div>
-          </div>
-          <button onclick="deletePlayer('${id}')" class="bg-red-600/20 text-red-400 px-2 py-1 rounded text-xs"><i class="fa-solid fa-trash"></i></button>
-        </div>`;
-      });
-      document.getElementById('admin-squad-list').innerHTML = html || '<p class="text-xs text-gray-500 text-center py-4">No players registered.</p>';
+      document.getElementById('dash-players').innerText = Object.keys(playersData).length;
+      document.getElementById('squad-count').innerText = Object.keys(playersData).length;
     });
 
     onValue(ref(db, 'sp_teams'), (snap) => {
@@ -657,30 +525,30 @@
       const tKeys = Object.keys(teamsData);
       document.getElementById('dash-teams').innerText = tKeys.length;
       
-      let selHtml = "";
-      let gridHtml = "";
-      let pubTeamHtml = "";
+      let selHtml = ""; let adminGridHtml = ""; let pubTeamHtml = "";
       
       tKeys.forEach(id => {
         let t = teamsData[id];
         selHtml += `<option value="${id}">${t.name}</option>`;
-        
         let members = getTeamPlayers(id);
-        gridHtml += `<div class="bg-black/40 p-4 rounded-xl border border-gray-800 space-y-3">
+        
+        // 🔒 DELETE BUTTON ONLY VISIBLE IN ADMIN PANEL
+        adminGridHtml += `<div class="bg-black/40 p-4 rounded-xl border border-gray-800 space-y-3">
           <div class="flex justify-between items-center border-b border-gray-800 pb-2">
             <h4 class="font-bold text-amber-400 text-sm">${t.name}</h4>
-            <button onclick="deleteTeam('${id}')" class="text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+            <button onclick="deleteTeam('${id}')" class="bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white px-2.5 py-1 rounded text-xs font-bold transition"><i class="fa-solid fa-trash mr-1"></i> Delete Team</button>
           </div>
           <div>
             <label class="block text-[10px] text-gray-400 uppercase font-bold mb-1">👑 कप्तान (Captain):</label>
             <select onchange="setTeamCaptain('${id}', this.value)" class="w-full bg-black/60 text-white text-xs p-2 rounded-lg border border-gray-700">
               <option value="">-- Select Captain --</option>
-              ${members.map(m => `<option value="${m.id}" ${t.captainId === m.id ? 'selected' : ''}>${m.name} (${m.role})</option>`).join('')}
+              ${members.map(m => `<option value="${m.id}" ${t.captainId === m.id ? 'selected' : ''}>${m.name}</option>`).join('')}
             </select>
           </div>
-          <p class="text-xs text-gray-400">Total Members: ${members.length}</p>
+          <p class="text-xs text-gray-400">Players: ${members.length}</p>
         </div>`;
 
+        // Public view (No delete button, completely safe)
         pubTeamHtml += `<div class="bg-black/40 p-3.5 rounded-xl border border-gray-800">
           <h4 class="font-bold text-white text-sm mb-1">${t.name}</h4>
           <p class="text-xs text-gray-400">${members.map(m=>m.name + (t.captainId === m.id ? ' (C)' : '')).join(', ') || 'No players assigned'}</p>
@@ -689,23 +557,14 @@
 
       document.getElementById('sel-teamA').innerHTML = selHtml;
       document.getElementById('sel-teamB').innerHTML = selHtml;
-      document.getElementById('admin-teams-grid').innerHTML = gridHtml || '<p class="text-xs text-gray-500 text-center py-4">No teams created.</p>';
+      document.getElementById('admin-teams-grid').innerHTML = adminGridHtml || '<p class="text-xs text-gray-500 text-center py-4">No teams created.</p>';
       document.getElementById('pub-teams-list').innerHTML = pubTeamHtml || '<p class="text-sm text-gray-500 text-center py-4">Teams will appear here.</p>';
     });
 
     onValue(ref(db, 'sp_match_history'), (snap) => {
       historyData = snap.val() || {};
-      const hKeys = Object.keys(historyData);
-      document.getElementById('dash-matches').innerText = hKeys.length;
-      
-      let hHtml = "";
-      hKeys.slice().reverse().forEach(id => {
-        let m = historyData[id];
-        hHtml += `<div class="bg-black/40 p-3.5 rounded-xl border border-gray-800">
-          <p class="text-xs font-bold text-amber-400">${m.teamA_name} vs ${m.teamB_name}</p>
-          <p class="text-xs text-white mt-1">Score: <b>${m.runs}/${m.wickets}</b> (${Math.floor(m.balls/6)}.${m.balls%6} Ov)</p>
-        </div>`;
-      });
+      document.getElementById('dash-matches').innerText = Object.keys(historyData).length;
+      let hHtml = Object.values(historyData).map(m => `<div class="bg-black/40 p-3.5 rounded-xl border border-gray-800 text-xs text-white"><b>${m.teamA_name} vs ${m.teamB_name}</b> - Score: ${m.runs}/${m.wickets}</div>`).join('');
       document.getElementById('pub-history-list').innerHTML = hHtml || '<p class="text-sm text-gray-500 text-center py-4">No matches completed yet.</p>';
       document.getElementById('admin-history-list').innerHTML = hHtml || '<p class="text-sm text-gray-500 text-center py-4">No matches completed yet.</p>';
     });
@@ -713,32 +572,18 @@
     onValue(ref(db, 'sp_live_match'), (snap) => {
       const data = snap.val();
       if(data) {
-        liveMatchId = Object.keys(data)[0];
-        liveMatchData = data[liveMatchId];
-        let m = liveMatchData;
-        
+        liveMatchId = Object.keys(data)[0]; liveMatchData = data[liveMatchId];
         document.getElementById('match-setup-panel').classList.add('hidden');
         document.getElementById('match-openers-panel').classList.add('hidden');
         document.getElementById('match-scoring-panel').classList.remove('hidden');
         document.getElementById('public-live-match').classList.remove('hidden');
-        
-        document.getElementById('pub-innings').innerText = m.innings;
-        document.getElementById('pub-teamA-name').innerText = m.teamA_name;
-        document.getElementById('pub-teamB-name').innerText = m.teamB_name;
-        document.getElementById('pub-runs').innerText = m.runs;
-        document.getElementById('pub-wickets').innerText = m.wickets;
-        document.getElementById('pub-overs').innerText = `${Math.floor(m.balls/6)}.${m.balls%6}`;
-        document.getElementById('pub-max-overs').innerText = m.targetOvers;
-
-        document.getElementById('ctrl-innings').innerText = m.innings;
-        document.getElementById('ctrl-teams-title').innerText = `${m.teamA_name} vs ${m.teamB_name}`;
-        document.getElementById('ctrl-runs').innerText = m.runs;
-        document.getElementById('ctrl-wickets').innerText = m.wickets;
-        document.getElementById('ctrl-overs').innerText = `${Math.floor(m.balls/6)}.${m.balls%6}`;
+        document.getElementById('pub-runs').innerText = liveMatchData.runs;
+        document.getElementById('pub-wickets').innerText = liveMatchData.wickets;
+        document.getElementById('ctrl-runs').innerText = liveMatchData.runs;
+        document.getElementById('ctrl-wickets').innerText = liveMatchData.wickets;
       } else {
         liveMatchId = null; liveMatchData = null;
         document.getElementById('match-scoring-panel').classList.add('hidden');
-        document.getElementById('match-openers-panel').classList.add('hidden');
         document.getElementById('match-setup-panel').classList.remove('hidden');
         document.getElementById('public-live-match').classList.add('hidden');
       }
